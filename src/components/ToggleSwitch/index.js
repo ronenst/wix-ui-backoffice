@@ -14,7 +14,7 @@ ToggleSwitch.propTypes = {
   ...CoreToggleSwitch.propTypes,
 
   /** size of the toggle switch */
-  size: oneOf(['x-small', 'small', 'large']),
+  size: oneOf(['small', 'medium', 'large']),
 
   /** Color for disabled toggle switch */
   skin: oneOf(['standard', 'error', 'success'])

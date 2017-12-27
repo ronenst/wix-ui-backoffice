@@ -1,38 +1,38 @@
 import {palette} from '../../palette';
 
 const sizeToOuterLabelWidth = {
-  'x-small': '28px',
-  small: '36px',
+  small: '28px',
+  medium: '36px',
   large: '45px'
 };
 
 const sizeToOuterLabelHeight = {
-  'x-small': '15px',
-  small: '20px',
+  small: '15px',
+  medium: '20px',
   large: '24px'
 };
 
 const sizeToInnerLabelWidth = {
-  'x-small': '13px',
-  small: '18px',
+  small: '13px',
+  medium: '18px',
   large: '21px'
 };
 
 const sizeToInnerLabelHeight = {
-  'x-small': '13px',
-  small: '18px',
+  small: '13px',
+  medium: '18px',
   large: '22px'
 };
 
 const sizeTolabelMovementRange = {
-  'x-small': '14px',
-  small: '17px',
+  small: '14px',
+  medium: '17px',
   large: '23px'
 };
 
 const sizeTotoggleIconDisplay = {
-  'x-small': 'none !important',
-  small: 'block',
+  small: 'none !important',
+  medium: 'block',
   large: 'block'
 };
 
