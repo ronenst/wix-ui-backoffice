@@ -1,34 +1,48 @@
 import toggleSwitchDriverFactory from './ToggleSwitch.driver';
-import {toggleSwitchDriverFactory as coreToggleSwitchDriverFactory}
-  from 'wix-ui-core/dist/src/components/ToggleSwitch/ToggleSwitch.driver';
-
 import {createDriverFactory} from 'wix-ui-test-utils';
 import React from 'react';
 import ToggleSwitch from './';
 
 describe('ToggleSwitchDriver', () => {
+  const noop = () => null;
+  const createDriver = createDriverFactory(toggleSwitchDriverFactory);
+  const render = props => <ToggleSwitch {...props} onChange={noop}/>;
 
-  const composeFactories =
+  // describe('Composing Factories', () => {
+  //   it('should have the function : isSmall ', () => {
+  //     expect(createDriver(render()).isSmall).not.toBe(undefined);
+  //   });
 
-    (...factories) =>
-      component =>
-        factories.reduce((factories, factory) => ({ ...factories, ...factory(component) })
-          , {});
+  //   it('should have the function: exists', () => {
+  //     expect(createDriver(render()).exists).not.toBe(undefined);
+  //   });
+  // });
 
-  const driverFactory = composeFactories(coreToggleSwitchDriverFactory, toggleSwitchDriverFactory);
+  describe('styles', () => {
 
-  const createDriver = createDriverFactory(driverFactory);
-  const render = props => <ToggleSwitch {...props} onChange={() => { }} />;
+    it('should have border-radius 50px', () => {
+      const driver = createDriver(render());
+      expect(driver.getBorderRadius()).toBe('50px');
+    });
 
-  it('should exist', () => {
-    expect(createDriver).not.toEqual({});
-  });
+    it('should default to large', () => {
+      const driver = createDriver(render());
+      expect(driver.isLarge()).toBe(true);
+    });
 
-  it('should have the function : fillColor', () => {
-    expect(createDriver(render()).fillColor).not.toBe(undefined);
-  });
+    it('should render small', () => {
+      const driver = createDriver(render({size: 'small'}));
+      expect(driver.isSmall()).toBe(true);
+    });
 
-  it('should have the function: exists', () => {
-    expect(createDriver(render()).exists).not.toBe(undefined);
+    it('should render medium', () => {
+      const driver = createDriver(render({size: 'medium'}));
+      expect(driver.isMedium()).toBe(true);
+    });
+
+    it('should render large', () => {
+      const driver = createDriver(render({size: 'large'}));
+      expect(driver.isLarge()).toBe(true);
+    });
   });
 });

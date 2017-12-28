@@ -1,20 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import $ from 'jquery';
-// import {isClassExists} from '../../test/utils';
+// import {toggleSwitchDriverFactory as coreFactory}
+  // from 'wix-ui-core/dist/src/components/ToggleSwitch/ToggleSwitch.driver';
 
 const toggleSwitchDriverFactory =
-  ({element, wrapper, component}) => {
+  component => {
+
+    const {calculatedTheme} = component.componentInstance;
 
     return {
-      // isXSmall: () => isClassExists(element, 'toggleSwitchXSmall'),
-      // isSmall: () => isClassExists(element, 'toggleSwitchSmall'),
-      // isLarge: () => !isClassExists(element, 'toggleSwitchXSmall') && !isClassExists(element, 'toggleSwitchSmall'),
-      fillColor: () => $(element).find('path').css('fill'),
-      setProps: props => {
-        const ClonedWithProps = React.cloneElement(component, Object.assign({}, component.props, props), ...(component.props.children || []));
-        ReactDOM.render(<div ref={r => element = r}>{ClonedWithProps}</div>, wrapper);
-      }
+      // ...coreFactory(core),
+      isSmall: () => calculatedTheme.outerLabelWidth === '28px',
+      isMedium: () => calculatedTheme.outerLabelWidth === '36px',
+      isLarge: () => calculatedTheme.outerLabelWidth === '45px',
+      getBorderRadius: () => calculatedTheme.borderRadius
     };
   };
 
